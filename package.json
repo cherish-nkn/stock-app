@@ -1,0 +1,67 @@
+{
+  "name": "stock-app",
+  "version": "1.0.0",
+  "description": "for analyze stock.",
+  "main": "./src/electron.js",
+  "repository": "git@github.com:cherish-nkn/stock-app.git",
+  "author": "cherishone",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --mode development",
+    "electron": "webpack --mode development && electron .",
+    "build:mac": "webpack --mode production && electron-builder --mac --x64",
+    "build:windows": "webpack --mode production && electron-builder --win --x64"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "electron": "^4.1.4",
+    "electron-builder": "^20.39.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "build": {
+    "productName": "四季報裏読み",
+    "appId": "tech.cherishone.stock",
+    "directories": {
+      "output": "build"
+    },
+    "extends": null,
+    "files": [
+      "./public/**/*",
+      "./src/electron.js"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.business"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
